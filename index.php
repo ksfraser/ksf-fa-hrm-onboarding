@@ -1,17 +1,11 @@
 <?php
-declare(strict_types=1);
 
-use Ksfraser\FrontAccounting\HRM\Onboarding\App\OnboardingFrontController;
-use Ksfraser\FrontAccounting\HRM\Onboarding\App\OnboardingAppShell;
+require_once __DIR__ . '/bootstrap.php';
 
 $path_to_root = '../..';
 
-if (file_exists(__DIR__ . '/bootstrap.php')) {
-    require_once __DIR__ . '/bootstrap.php';
-}
-
-$frontController = new OnboardingFrontController(
-    new OnboardingAppShell(),
+$frontController = new \Ksfraser\FrontAccounting\HRM\Onboarding\App\OnboardingFrontController(
+    new \Ksfraser\FrontAccounting\HRM\Onboarding\App\OnboardingAppShell(),
     'SA_ONBOARDING_VIEW',
     $path_to_root
 );

@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Ksfraser\FrontAccounting\HRM\Onboarding\App;
 
 use ksfraser\FrontAccounting\Common\App\AbstractAppShell;
-use ksfraser\FrontAccounting\Common\Menu\FAModuleMenu;
-use Ksfraser\FrontAccounting\HRM\Onboarding\Controller\OnboardingTabController;
+use ksfraser\FrontAccounting\Common\App\TabRegistration;
 
 class OnboardingAppShell extends AbstractAppShell
 {
@@ -14,17 +13,16 @@ class OnboardingAppShell extends AbstractAppShell
     {
         parent::__construct('onboarding', 'index.php', 'view', 'onboarding_checklists');
 
-        $this->add_module(_("Onboarding"));
-
-        $menu = new FAModuleMenu(
-            'modules/ksf_FA_HRM_Onboarding/index.php',
-            'view',
-            ''
-        );
-
-        $menu->addItem('onboarding_checklists', _("Onboarding Checklists"), MENU_INQUIRY)
-             ->registerWithApp($this, 'SA_ONBOARDING_VIEW');
-
-        $this->add_extensions();
+        $this->registerTab(new TabRegistration(
+            'onboarding_checklists',
+            'Onboarding Checklists',
+            'SA_ONBOARDING_VIEW',
+            null,
+            10,
+            0,
+            null,
+            null,
+            array()
+        ));
     }
 }
