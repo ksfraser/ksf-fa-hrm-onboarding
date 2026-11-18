@@ -8,10 +8,10 @@ require_once __DIR__ . '/includes/common.inc';
 require_once __DIR__ . '/includes/events.inc';
 use ksfraser\RelatedTo\DTO\RelatedRecordDto;
 define('SS_ksf_FA_HRM_Onboarding', 192 << 8);
-if (!defined('SA_ONBOARDING_VIEW')) {
-    define('SA_ONBOARDING_VIEW', SS_ksf_FA_HRM_Onboarding | 1);
-    define('SA_ONBOARDING_MANAGE', SS_ksf_FA_HRM_Onboarding | 2);
-    define('SA_ONBOARDING_ADMIN', SS_ksf_FA_HRM_Onboarding | 3);
+if (!defined('SA_HRM_ONBOARDING_VIEW')) {
+    define('SA_HRM_ONBOARDING_VIEW', SS_ksf_FA_HRM_Onboarding | 1);
+    define('SA_HRM_ONBOARDING_MANAGE', SS_ksf_FA_HRM_Onboarding | 2);
+    define('SA_HRM_ONBOARDING_ADMIN', SS_ksf_FA_HRM_Onboarding | 3);
 }
 class hooks_ksf_FA_HRM_Onboarding extends hooks {
     const RESPONDERS = array('RELATED_TO_FIELDS', 'ONBOARDING_RESOLVE', 'ONBOARDING_FIELDS', 'ONBOARDING_LIST');
@@ -21,9 +21,9 @@ class hooks_ksf_FA_HRM_Onboarding extends hooks {
     function install_options($app) { }
     function install_access() {
         $security_sections[SS_ksf_FA_HRM_Onboarding] = _("Onboarding");
-        $security_areas['SA_ONBOARDING_VIEW'] = array(SA_ONBOARDING_VIEW, _("View onboarding checklists"));
-        $security_areas['SA_ONBOARDING_MANAGE'] = array(SA_ONBOARDING_MANAGE, _("Manage onboarding checklists"));
-        $security_areas['SA_ONBOARDING_ADMIN'] = array(SA_ONBOARDING_ADMIN, _("Administer onboarding"));
+        $security_areas['SA_HRM_ONBOARDING_VIEW'] = array(SA_HRM_ONBOARDING_VIEW, _("View onboarding checklists"));
+        $security_areas['SA_HRM_ONBOARDING_MANAGE'] = array(SA_HRM_ONBOARDING_MANAGE, _("Manage onboarding checklists"));
+        $security_areas['SA_HRM_ONBOARDING_ADMIN'] = array(SA_HRM_ONBOARDING_ADMIN, _("Administer onboarding"));
         return array($security_areas, $security_sections);
     }
     function activate_extension($company, $check_only = true) {
@@ -40,9 +40,9 @@ class hooks_ksf_FA_HRM_Onboarding extends hooks {
     public function getModuleConstants(&$data, $opts = null) {
         $data['constants'] = array(
             'SS_ksf_FA_HRM_Onboarding' => SS_ksf_FA_HRM_Onboarding,
-            'SA_ONBOARDING_VIEW' => SA_ONBOARDING_VIEW,
-            'SA_ONBOARDING_MANAGE' => SA_ONBOARDING_MANAGE,
-            'SA_ONBOARDING_ADMIN' => SA_ONBOARDING_ADMIN,
+            'SA_HRM_ONBOARDING_VIEW' => SA_HRM_ONBOARDING_VIEW,
+            'SA_HRM_ONBOARDING_MANAGE' => SA_HRM_ONBOARDING_MANAGE,
+            'SA_HRM_ONBOARDING_ADMIN' => SA_HRM_ONBOARDING_ADMIN,
         );
         return true;
     }
